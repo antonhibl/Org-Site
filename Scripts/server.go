@@ -40,9 +40,11 @@ func main() {
 	// Initialize a new router
 	router := mux.NewRouter()
 
+	PORT := os.Getenv("PORT")
+
 	srv := &http.Server{
 		// address to listen on
-		Addr: "127.0.0.1:8080",
+		Addr: "0.0.0.0:" + PORT,
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
