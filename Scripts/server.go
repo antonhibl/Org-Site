@@ -29,6 +29,17 @@ func teapot_handler(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "<html><h1><a href='https://datatracker.ietf.org/doc/html/rfc2324/'>HTCPTP</h1><img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftaooftea.com%2Fwp-content%2Fuploads%2F2015%2F12%2Fyixing-dark-brown-small.jpg&f=1&nofb=1' alt='Im a teapot'></a><html>")
 }
 
+func getPort() string {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":3000"
+	} else {
+		port = ":" + port
+	}
+
+	return port
+}
+
 // Main server program
 func main() {
 	// initialize a time.Duration variable to hold a wait time-period
@@ -40,11 +51,9 @@ func main() {
 	// Initialize a new router
 	router := mux.NewRouter()
 
-	PORT := os.Getenv("PORT")
-
 	srv := &http.Server{
 		// address to listen on
-		Addr: "0.0.0.0:" + PORT,
+		Addr: "0.0.0.0" + getPort(),
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
