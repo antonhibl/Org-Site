@@ -4,8 +4,8 @@
       (list
        (list "org-site"
              :recursive t
-             :base-directory "../Development"
-             :publishing-directory "../Production/Src"
+             :base-directory "~/Projects/Org-Site/Development"
+             :publishing-directory "~/Projects/Org-Site/Production/Src"
              :publishing-function 'org-twbs-export-to-html)))
 
 (org-publish-all t)
