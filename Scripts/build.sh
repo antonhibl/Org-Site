@@ -1,3 +1,1 @@
-cd ~/Projects/Org-Site/Scripts/;
-go build;
-mv m org-server;
+go build -o org-server;
