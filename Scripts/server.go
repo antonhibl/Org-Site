@@ -53,7 +53,7 @@ func main() {
 
 	srv := &http.Server{
 		// address to listen on
-		Addr: "0.0.0.0" + getPort(),
+		Addr: getPort(),
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
