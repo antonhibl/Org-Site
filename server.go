@@ -75,12 +75,12 @@ func main() {
 	router.HandleFunc("/health", health_handler).Methods("GET")
 	// define the fileserver root dir
 	router.PathPrefix("/").Handler(http.StripPrefix("/",
-		http.FileServer(http.Dir("../Production"))))
+		http.FileServer(http.Dir("./Production"))))
 
 	// pass all requests to my router
 	http.Handle("/", router)
 	// print listener status
-	log.Print("Listening at http://localhost" + getPort())
+	log.Print("Listening at https://org-site-production.up.railway.app" + getPort())
 
 	// Run the server in a goroutine so that it doesn't block.
 	go func() {
