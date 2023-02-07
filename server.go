@@ -72,7 +72,7 @@ func main() {
 	// teapot handler
 	router.HandleFunc("/teapot", teapot_handler).Methods("GET")
 	// health handler
-	router.HandlerFunc("/health", health_handler).Methods("GET")
+	router.HandleFunc("/health", health_handler).Methods("GET")
 	// define the fileserver root dir
 	router.PathPrefix("/").Handler(http.StripPrefix("/",
 		http.FileServer(http.Dir("../Production"))))
