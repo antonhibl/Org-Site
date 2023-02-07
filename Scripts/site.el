@@ -2,7 +2,7 @@
 
 (setq org-publish-project-alist
       (list
-       (list "my-org-site"
+       (list "org-site"
              :recursive t
              :base-directory "../Development"
              :publishing-directory "../Production/Src"
