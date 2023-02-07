@@ -19,6 +19,11 @@ func favicon_handler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./assets/art/favicon.ico")
 }
 
+func health_handler(w http.ResponseWriter, r *http.Request) {
+    // return 200 code
+	w.WriteHeader(http.StatusOK)
+}
+
 // teapot handler
 func teapot_handler(w http.ResponseWriter, r *http.Request) {
 	// return teapot state
@@ -66,6 +71,8 @@ func main() {
 	router.HandleFunc("/favicon.ico", favicon_handler).Methods("GET")
 	// teapot handler
 	router.HandleFunc("/teapot", teapot_handler).Methods("GET")
+	// health handler
+	router.HandlerFunc("/health", health_handler).Methods("GET")
 	// define the fileserver root dir
 	router.PathPrefix("/").Handler(http.StripPrefix("/",
 		http.FileServer(http.Dir("../Production"))))
@@ -73,7 +80,7 @@ func main() {
 	// pass all requests to my router
 	http.Handle("/", router)
 	// print listener status
-	log.Print("Listening at http://localhost:8080")
+	log.Print("Listening at http://localhost" + getPort())
 
 	// Run the server in a goroutine so that it doesn't block.
 	go func() {
