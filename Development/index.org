@@ -1,6 +1,4 @@
 #+TITLE: My Blog!
 #+AUTHOR: Anton Hibl
 
-*  Welcome to my Website and Blog!
-
-hello, friends
+hello, friends! this should be working now...

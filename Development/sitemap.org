@@ -1,0 +1,3 @@
+#+TITLE: Sitemap for project my-org-site
+
+- [[file:index.org][My Blog!]]
